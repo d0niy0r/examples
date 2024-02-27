@@ -13,6 +13,7 @@ class GridViewWidget extends StatelessWidget {
       ),
       body: Column(
         children: [
+
           Container(height: 100),
           // Expanded(
           //   child: GridView(
