@@ -1,6 +1,8 @@
 import 'package:example/features/lesson2/presentation/repsitory/repository.dart';
 import 'package:flutter/material.dart';
 
+import '../../utility/app_function.dart';
+
 class Lesson2Screen extends StatefulWidget {
   const Lesson2Screen({Key? key});
 
@@ -8,17 +10,21 @@ class Lesson2Screen extends StatefulWidget {
   State<Lesson2Screen> createState() => _Lesson2ScreenState();
 }
 
-class _Lesson2ScreenState extends State<Lesson2Screen> {
+class _Lesson2ScreenState extends State<Lesson2Screen> with Lesson2Functions{
   final list1 = Repository.list;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               const SizedBox(
                 height: 50,
@@ -38,7 +44,7 @@ class _Lesson2ScreenState extends State<Lesson2Screen> {
               ),
               GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: list1.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -47,32 +53,35 @@ class _Lesson2ScreenState extends State<Lesson2Screen> {
                 ),
                 itemBuilder: (context, index) {
                   Repository repository = list1[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: repository.color,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(20.0),
+                  return GestureDetector(
+                    onTap: () => gridViewClicked(),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: repository.color,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(20.0),
+                        ),
                       ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          repository.icon, // Use Icon widget here
-                          size: 50,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          repository.title,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            repository.icon, // Use Icon widget here
+                            size: 50,
                           ),
-                        ),
-                      ],
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            repository.title,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -95,7 +104,7 @@ class _Lesson2ScreenState extends State<Lesson2Screen> {
                 shrinkWrap: true,
                 itemExtent: 200,
                 itemCount: 3,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),

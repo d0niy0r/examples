@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'features/lesson2/presentation/pages/gridView.dart';
 import 'features/lesson2/presentation/pages/lesson2_page.dart';
+import 'features/lesson3/presentation/pages/lesson3.dart';
+import 'features/lesson3/presentation/pages/use_http.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: false),
-      home: Lesson2Screen(),
+      home: UseHttpScreen(),
     );
   }
 }
