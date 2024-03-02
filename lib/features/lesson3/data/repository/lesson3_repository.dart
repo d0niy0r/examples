@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:example/core/services/local_database/local_database.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/lesson3_model.dart';
@@ -24,15 +25,31 @@ class Lesson3Repository {
   }
 
   Future<List<Lesson3Model>> getListData() async {
-    final res = await http.get(
-      Uri.parse("https://fakestoreapi.com/products"),
-      headers: {"Content-Type": "Application/json"},
-    );
-    final List<dynamic> responseBody = jsonDecode(res.body);
-    List<Lesson3Model> dataList = [];
-    for (final item in responseBody ?? []) {
-      dataList.add(Lesson3Model.fromJson(item));
+    try{
+      final res = await http.get(
+        Uri.parse("https://fakestoreapi.com/products"),
+        headers: {"Content-Type": "Application/json"},
+      );
+      await StorageRepository.setString(key: "data", value: res.body);
+      final List<dynamic> responseBody = jsonDecode(res.body);
+      List<Lesson3Model> dataList = [];
+      for (final item in responseBody ?? []) {
+        dataList.add(Lesson3Model.fromJson(item));
+      }
+      return dataList;
+    } catch(e){
+      print("$e");
+      final localData = StorageRepository.getString(keyOfValue: 'data');
+      print(localData);
+      final res = jsonDecode(localData ?? "");
+      List<Lesson3Model> dataList = [];
+      for (final item in res ?? []) {
+        try{
+        dataList.add(Lesson3Model.fromJson(item));
+        }catch(e){}
+      }
+      return dataList;
+      }
     }
-    return dataList;
-  }
+
 }
