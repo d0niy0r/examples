@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../../data/repository/lesson3_repository.dart';
 
 class Lesson3Provider extends ChangeNotifier {
-  Lesson3Model? lesson3model;
+  List<Lesson3Model>? lesson3model;
   bool loading = false;
   bool error = false;
   bool success = false;
@@ -14,11 +14,11 @@ class Lesson3Provider extends ChangeNotifier {
   // bool get loading => _loading;
   // bool get error => _error;
   // bool get success => _success;
-  void getData() async {
+  Future<void> getListData() async {
     try{
       loading = true;
       error = false;
-      lesson3model = await Lesson3Repository().getData();
+      lesson3model = await Lesson3Repository().getListData();
       loading = false;
       success = true;
     }catch(_){
