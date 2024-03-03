@@ -1,6 +1,5 @@
 import 'package:example/features/lesson3/data/model/lesson3_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../data/repository/lesson3_repository.dart';
 

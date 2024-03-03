@@ -26,19 +26,31 @@ class _UseHttpScreenState extends State<UseHttpScreen> {
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {},
       // ),
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(53, 55, 75, 1),
+        title: const Text(
+          "Suit rent",
+          style: TextStyle(
+              fontSize: 24,
+              color: Colors.white,
+              fontWeight: FontWeight.w700),
+        ),
+        centerTitle: true,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(
-              height: 24,
-            ),
-            const Text(
-              "Suit rent",
-              style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700),
-            ),
+            // const SizedBox(
+            //   height: 24,
+            // ),
+            // const Text(
+            //   "Suit rent",
+            //   style: TextStyle(
+            //       fontSize: 24,
+            //       color: Colors.white,
+            //       fontWeight: FontWeight.w700),
+            // ),
             const SizedBox(
               height: 12,
             ),

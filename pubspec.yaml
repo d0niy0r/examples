@@ -32,9 +32,17 @@ dependencies:
     sdk: flutter
   expansion_tile_card: ^3.0.0
 
+  #ui
   cupertino_icons: ^1.0.2
+
+  #logic
   http: ^1.2.1
   provider: ^6.1.2
+
+  #db
+  shared_preferences: ^2.2.2
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
