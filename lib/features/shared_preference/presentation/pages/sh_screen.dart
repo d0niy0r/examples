@@ -11,12 +11,17 @@ class ShScreen extends StatefulWidget {
 }
 
 class _ShScreenState extends State<ShScreen> {
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController passwordTextEditingController = TextEditingController();
+
+
 
   @override
   void initState() {
-    textEditingController.text =
-        StorageRepository.getString(keyOfValue: "value") ?? "";
+    emailTextEditingController.text =
+        StorageRepository.getString(keyOfValue: "email") ?? "";
+    passwordTextEditingController.text =
+        StorageRepository.getString(keyOfValue: "password") ?? "";
     super.initState();
   }
 
@@ -73,7 +78,7 @@ class _ShScreenState extends State<ShScreen> {
                             borderRadius: BorderRadius.circular(24),
                             borderSide: const BorderSide(color: Colors.purple),
                           )),
-                      controller: textEditingController,
+                      controller: emailTextEditingController,
                       validator: (text) {
                         if (text == null) {
                           return "Telefon raqami majburiy";
@@ -84,7 +89,7 @@ class _ShScreenState extends State<ShScreen> {
                         return null;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     TextFormField(
@@ -96,7 +101,7 @@ class _ShScreenState extends State<ShScreen> {
                             borderRadius: BorderRadius.circular(24),
                             borderSide: const BorderSide(color: Colors.purple),
                           )),
-                      controller: textEditingController,
+                      controller: emailTextEditingController,
                       validator: (text) {
                         if (text == null) {
                           return "Telefon raqami majburiy";
@@ -154,8 +159,13 @@ class _ShScreenState extends State<ShScreen> {
                     if (key.currentState!.validate()) {
                       FocusScope.of(context).unfocus();
                       await StorageRepository.setString(
-                          key: "value", value: textEditingController.text);
+                          key: "email", value: emailTextEditingController.text);
+
+                      await StorageRepository.setString(
+                          key: "password", value: passwordTextEditingController.text);
                       log("saved");
+                      log(StorageRepository.getString(keyOfValue: "value") ??
+                          "");
                       log(StorageRepository.getString(keyOfValue: "value") ??
                           "");
                     }
