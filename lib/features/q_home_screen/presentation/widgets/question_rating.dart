@@ -10,27 +10,62 @@ class QuestionRating extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
         color: AppColors.orange,
       ),
       child: Row(
         children: [
-          Expanded(
+          const Expanded(
             child: Column(
               children: [
-                Text("data"),
-                Text("data"),
+                Text(
+                  "Question count",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  "230",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
           ),
           Container(
-            height: 50, width: 2,
-            color: Colors.red,
+            height: 50,
+            width: 2,
+            color: Colors.white,
           ),
-          Expanded(
+          const Expanded(
             child: Column(
               children: [
-                Text("data"),
-                Text("data"),
+                Text(
+                  "Your Ranking",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.white,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "230",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Icon(
+                      Icons.person_2_outlined,
+                      size: 12,
+                    )
+                  ],
+                ),
               ],
             ),
           ),

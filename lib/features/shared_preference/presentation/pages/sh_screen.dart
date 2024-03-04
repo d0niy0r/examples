@@ -101,7 +101,7 @@ class _ShScreenState extends State<ShScreen> {
                             borderRadius: BorderRadius.circular(24),
                             borderSide: const BorderSide(color: Colors.purple),
                           )),
-                      controller: emailTextEditingController,
+                      controller: passwordTextEditingController,
                       validator: (text) {
                         if (text == null) {
                           return "Telefon raqami majburiy";
