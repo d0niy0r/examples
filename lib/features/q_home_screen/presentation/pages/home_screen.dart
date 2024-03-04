@@ -122,6 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height_container: 50,
                 title: "UPGRADE",
                 color: AppColors.colorCCDCE7,
+                onTap: () {},
               ),
             ),
             const SizedBox(height: 10,),

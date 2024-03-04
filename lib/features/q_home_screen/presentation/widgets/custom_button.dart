@@ -4,12 +4,15 @@ class CustomButton extends StatelessWidget {
   final String title;
   final Color color;
   final double height_container;
+  Function() onTap;
 
-  const CustomButton({
+
+  CustomButton({
     super.key,
     required this.title,
     required this.color,
     required this.height_container,
+    required this.onTap
 
   });
 
@@ -18,7 +21,7 @@ class CustomButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () => onTap(),
         child: Container(
           decoration: BoxDecoration(
             color: color,
